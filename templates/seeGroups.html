@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<style>
+				body {background-color: lightyellow;}
+				h1   {color: darkolivegreen;
+						background-color: khaki;
+						text-align:center; 
+						border-style:solid;
+						border-color:mediumslateblue; 
+						
+						}
+				p    {color: darkblue;}
+
+				.post-box{ 
+					border: 25px lightpink;
+					background-color:lightyellow;
+					padding: 25px;
+  				margin: 25px;
+					width:  600px;
+					border-style:solid;
+					border-color:mediumslateblue
+					}
+				.link-box{
+					background-color:lightblue;;
+
+				}
+		</style>
+
+
+		
+</head>
+<body>
+	<a href="/logout"> Logout </a> <br>
+	<a href="/dashboard"> Dashboard </a> <br>
+	<a href='/seeTagRequests'> See your tag Requests </a> <br>
+	<a href="/seeFollowRequests"> See your follow requests </a> <br>
+	<a href='/seeGroups'> See your groups </a> <br>
+	<a href="/makeFollowRequests"> Find people to follow! </a> <br>
+	<a href='/makeTagRequests'>Tag someone </a>	
+
+
+
+    <h1 >Finstagram </h1>
+    
+    {% if error %}
+
+	<p class="error"> <strong> Error: </strong> {{error}} </p>
+
+    {% endif %}
+    
+	<div  style=" text-align:center; border-style:solid; border-color:mediumslateblue; ">
+            Add a friend to any of the groups you own!
+            <form action='/addFriend' method ="POST"> 
+                <input type="text" name="candidate_friend" placeholder="enter a username">
+                <input type="text" name="group_name" placeholder="enter a group name">
+                <input type = "submit" value= submit!>
+            </form>
+    </div>
+    
+    {% if my_requests %}
+        <div >
+            <h2 style="color: darkolivegreen;">Your close friend groups:</h2>
+            {% for group in my_requests %}
+
+            <div class= "post-box" style="border-style:solid; text-align:center; vertical-align:middle">
+                    
+                    <p style="color:black;"> {{group.groupName}} </p>
+
+            </div>
+            {% endfor %}
+
+            
+
+        </div>
+    {% endif %}
+
+
+
+
+
+	<br>
+
+
+</body>
+</html>

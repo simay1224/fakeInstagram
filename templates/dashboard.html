@@ -1,0 +1,127 @@
+
+        <!DOCTYPE html>
+<html>
+<head>
+		<style>
+				body {background-color: lightyellow;}
+				h1   {color: darkolivegreen;
+						background-color: khaki;
+						text-align:center; 
+						border-style:solid;
+						border-color:mediumslateblue; 
+						
+						}
+				p    {color: darkblue;}
+
+				.post-box{ 
+					border: 25px lightpink;
+					background-color:lightyellow;
+					padding: 25px;
+  				margin: 25px;
+					width:  600px;
+					border-style:solid;
+					border-color:mediumslateblue
+					}
+				.link-box{
+					background-color:lightblue;
+
+				}
+				.column{
+					text-align: center;
+					float: left;
+  					width: 50%;
+
+				}
+				.row:after {
+					content: "";
+					display: table;
+					clear: both;
+				}
+				
+		</style>
+
+
+		
+</head>
+<body>
+		<a href="/logout"> Logout </a> <br>
+		<a href="/dashboard"> Dashboard </a> <br>
+		<a href='/seeTagRequests'> See your tag Requests </a> <br>
+		<a href="/seeFollowRequests"> See your follow requests </a> <br>
+		<a href='/seeGroups'> See your groups </a> <br>
+		<a href="/makeFollowRequests"> Find people to follow! </a> <br>
+        <a href='/makeTagRequests'>Tag someone </a>	
+
+
+	<h1 >Welcome to Finstagram, {{username}}</h1>
+	{% if error %}
+
+    <p class="error"> <strong> Error: </strong> {{error}} </p>
+
+	{% endif %}
+
+
+<div class="row">	
+	<div class= "column">
+		<div class="link-box" style=" text-align:center; border-style:solid; border-color:mediumslateblue; ">
+				<form action='/postPhoto' method ="POST">
+					<h3>Post a photo!</h3>
+					<p>Please provide the file link, caption and select if you want your post to be seen by all followers.</p>
+
+					<input type="text" name="link" placeholder= "file link" required/> </br>
+					<input type="text" name="caption" placeholder= "caption" required/> </br>
+					<br>To tag users: 
+					Enter usernames one at a time </br>
+					<input type="text" name="tagees" placeholder= "enter tagee username" /> 
+					 
+					<p>I want this post to be seen by:</p>
+					<input type="checkbox" name="all_followers" value=1>All followers can see <br>
+					<br>To share with specific close friend groups: 
+					Enter groupnames and their owners one at a time</br>
+					<input type="text" name="groups_selected" placeholder= "enter group name" /> 
+					<input type="text" name="group_owner_selected" placeholder= "enter group owner" /> 
+					<br>
+					<input type = "submit" value= Post>
+				</form>
+
+		</div>
+		{% if posts %}
+		<h2 style="color: darkolivegreen;">Dashboard:</h2>
+		{% endif %}
+
+
+		{% for photo in posts %}
+		<div class= "post-box" style="border-style:solid; text-align:center; vertical-align:middle">
+				
+				<p style="color:black;"> {{photo.photoOwner}} , photo Id = {{photo.photoID}}</p>
+				<img src={{photo.filePath}}  width="300" height="400" style="border-style:solid; border-color:mediumslateblue; background-color:sandybrown; ">
+				<p>{{photo.timestamp}}</p>
+				<p>"{{photo.caption}}"</p>
+
+				
+				<p style="color:gray;">people tagged: </p>
+				{% for taggedPhoto in tagees %}
+					{%if taggedPhoto.photoID == photo.photoID %}
+							<p>{{taggedPhoto.fname}}   {{taggedPhoto.lname}}</p>
+					{% endif%}
+				{% endfor %}
+				<p style="color:gray;">people tagged end here</p>
+				
+		</div>
+
+		<br> <br>
+		{% endfor %}
+
+	</div>
+	<div class="column">
+
+
+	
+
+	</div>
+
+		<br>
+
+</div>
+</body>
+</html>

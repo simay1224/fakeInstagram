@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<style>
+				body {background-color: lightyellow;}
+				h1   {color: darkolivegreen;
+						background-color: khaki;
+						text-align:center; 
+						border-style:solid;
+						border-color:mediumslateblue; 
+						
+						}
+				p    {color: darkblue;}
+
+				.post-box{ 
+					border: 25px lightpink;
+					background-color:lightyellow;
+					padding: 25px;
+  				margin: 25px;
+					width:  600px;
+					border-style:solid;
+					border-color:mediumslateblue
+					}
+				.link-box{
+					background-color:lightblue;;
+
+				}
+		</style>
+
+
+		
+</head>
+<body>
+	<a href="/logout"> Logout </a> <br>
+	<a href="/dashboard"> Dashboard </a> <br>
+	<a href='/seeTagRequests'> See your tag Requests </a> <br>
+	<a href="/seeFollowRequests"> See your follow requests </a> <br>
+	<a href='/seeGroups'> See your groups </a> <br>
+	<a href="/makeFollowRequests"> Find people to follow! </a> <br>
+	<a href='/makeTagRequests'>Tag someone </a>	
+
+
+
+
+	<h1 >Finstagram</h1>
+	
+	{% if error %}
+
+    <p class="error"> <strong> Error: </strong> {{error}} </p>
+
+	{% endif %}
+
+	{% if my_requests %}
+	<h2 style="color: darkolivegreen;">Your tag  requests:</h2>
+		{% for photo in my_requests %}
+
+	<div class= "post-box" style="border-style:solid; text-align:center; vertical-align:middle">
+				
+				<p style="color:black;"> {{photo.photoOwner}} , photo Id = {{photo.photoID}}</p>
+				<img src={{photo.filePath}}  width="300" height="400" style="border-style:solid; border-color:mediumslateblue; background-color:sandybrown; ">
+				<p>{{photo.timestamp}}</p>
+				<p>"{{photo.caption}}"</p>
+
+				
+				<p style="color:gray;">people tagged: </p>
+				{% for taggedPhoto in tagees %}
+					{%if taggedPhoto.photoID == photo.photoID %}
+							<p>{{taggedPhoto.fname}}   {{taggedPhoto.lname}}</p>
+					{% endif%}
+				{% endfor %}
+				<p style="color:gray;">people tagged end here</p>
+				<div  style=" text-align:center; border-style:solid; border-color:mediumslateblue; ">
+					
+					<form action='/acceptTag' method ="POST">
+						<label>
+						<input type="checkbox" name="check_yes" value= {{photo.photoID}} >
+						Accept  
+						</label>
+						<label>
+						<input type="checkbox" name="check_no" value= {{photo.photoID}} >
+						Decline
+						</label>
+						<input type = "submit" value= submit!>
+					</form>
+				</div>
+				<br> <br>
+		</div>
+
+		{% endfor %}
+
+
+	{% endif %}
+
+	<br>
+
+
+</body>
+</html>

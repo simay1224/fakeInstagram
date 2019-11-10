@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Login!
+</p>
+
+<form action='/loginData' method ="POST">
+  <input type="text" name="username" placeholder= "Enter username" required/> </br>
+  <input type="password" name="password" placeholder= "Enter password" required/> </br>
+ 
+  <input type = "submit" value= Login>
+  {% if error %}
+
+    <p class="error"> <strong> Error: </strong> {{error}} </p>
+
+  {% endif %}
+
+</form>
+
+</body>
+</html>
+
+
+
+

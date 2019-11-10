@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+        <head>
+                <style>
+                        body {background-color: lightyellow;}
+                        h1   {color: darkolivegreen;
+                                background-color: khaki;
+                                text-align:center; 
+                                border-style:solid;
+                                border-color:mediumslateblue; 
+                                
+                                }
+                        p    {color: darkblue;}
+        
+                </style>
+        
+        
+                
+        </head>
+<body>
+
+<p style=" text-align:center" >Make a Follow request!
+</p>
+
+<div  style=" text-align:center; border-style:solid; border-color:mediumslateblue; ">
+    <form action='/requestToFollow' method ="POST">
+        
+            <p>Enter the user you want to follow</p>
+            <input type="text" name="candidate_username" placeholder= "Enter username" required/> </br>
+            <input type = "submit" value= Submit!>
+
+
+    </form>
+</div>
+<a href='/dashboard'>Go back </a>	
+
+</body>
+</html>

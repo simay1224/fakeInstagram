@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+        <head>
+                <style>
+                        body {background-color: lightyellow;}
+                        h1   {color: darkolivegreen;
+                                background-color: khaki;
+                                text-align:center; 
+                                border-style:solid;
+                                border-color:mediumslateblue; 
+                                
+                                }
+                        p    {color: darkblue;}
+        
+                </style>
+        
+        
+                
+        </head>
+<body>
+        <a href="/logout"> Logout </a> <br>
+        <a href="/dashboard"> Dashboard </a> <br>
+        <a href='/seeTagRequests'> See your tag Requests </a> <br>
+        <a href="/seeFollowRequests"> See your follow requests </a> <br>
+        <a href='/seeGroups'> See your groups </a> <br>
+        <a href="/makeFollowRequests"> Find people to follow! </a> <br>
+        <a href='/makeTagRequests'>Tag someone </a>	
+
+<p style=" text-align:center" >Make a Follow request!
+</p>
+
+{% if error %}
+
+<p class="error"> <strong> Error: </strong> {{error}} </p>
+
+{% endif %}
+
+<div  style=" text-align:center; border-style:solid; border-color:mediumslateblue; ">
+    <form action='/requestToFollow' method ="POST">
+        <p>Enter the user you want to follow</p>
+        <input type="text" name="candidate_username" placeholder= "Enter username" /> </br>
+        <input type = "submit" value= Submit!>
+
+    </form>
+</div>
+<a href='/dashboard'>Go back </a>	
+
+</body>
+</html>
