@@ -15,5 +15,5 @@ Users are able to log in, post photos, view (some of) the photos posted by other
 photos, photos posted by people they are `following`, and close friends, detailed below); `tag`
 photos items with handles of people, etc. 
 
-## how to run?
-Go to the directory where the app.py is, and in your terminal run `python app.py`
+## how?
+Go to the directory where the app.py is using your terminal, and run `python app.py`
