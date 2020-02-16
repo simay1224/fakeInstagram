@@ -19,6 +19,7 @@ A user can:
 - accept/reject/ignore follow requests
 - send tag requests to other users to tag them in a post
 - accept/reject/ignore tag requests
+- comment on pictures they are able to view
 
 
 ## How do I run it?
