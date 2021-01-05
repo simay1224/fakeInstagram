@@ -6,7 +6,7 @@ app = Flask(__name__)
 # Config mysql
 conn = pymysql.connect(host = 'localhost', 
                     user= 'root', 
-                    password= 'Simay1224.',
+                    password= 'password123',
                     db='beta',
                     cursorclass=pymysql.cursors.DictCursor)
 
